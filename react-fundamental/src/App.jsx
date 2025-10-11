@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// jsx dasar
 
-function App() {
-  const [count, setCount] = useState(0)
+// function App(){
+//   return(
+//     <div>
+//       <h1>Hello React</h1>
+//       <p>Belajar JSX itu menyenangkan!</p>
+//     </div>
+//   )
+// }
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+// export default App
+
+
+
+// ekspresi javascript di JSX
+
+// const name = "Guntur Lailam Yuro"
+
+// function App(){
+//   return(
+//     <div>
+//       <h1>Halo, {name}!</h1>
+//       <p>Saya semangat belajar react!</p>
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+// aturan dasar jsx
+// 1 . hanya boleh satu parent elemen
+// function App(){
+//   return(
+//   <div>
+//     <h1>Hello</h1>
+//     <p>World</p>
+//   </div>
+// );
+// }
 
 export default App
+
+// 2. gunakan className bukan class
+{/* <h1 className="title">Hello React</h1> */}
+
+
+// 3. gunakan camelCase
+{/* <button onClick={() => alert("Clicked!")}>Klik Saya</button> */}
