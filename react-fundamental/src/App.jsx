@@ -1,14 +1,15 @@
-// menggunakan props di komponen
-// function Welcome(props){
-//   return <h1>Halo, {props.name}</h1>
-// }
+// state dasar
+// import {useState} from "react"
 
 // function App(){
+//   const [message, setMessage]  = useState("Halo, React!")
+
 //   return(
 //     <div>
-//       <Welcome name="Guntur"/>
-//       <Welcome name="Lailam"/>
-//       <Welcome name="Yuro"/>
+//       <h1>{message}</h1>
+//       <button onClick={() => setMessage("State telah berubah!")}>
+//         Ubah Pesan
+//       </button>
 //     </div>
 //   )
 // }
@@ -16,23 +17,43 @@
 // export default App
 
 
+// state dengan angka (counter)
+// import { useState } from "react";
 
-// menggunakan beberapa props
-function UserCard(props){
-  return(
-    <div>
-      <h2>{name}</h2>
-      <p>Umur: {page}</p>
-    </div>
-  )
-}
+// function App(){
+//   const [count, setCount] = useState(0)
+
+//   return(
+//     <div>
+//       <h1>Count: {count}</h1>
+//       <button onClick={() => setCount(count + 1 )}>Tambah</button>
+//       <button onClick={() => setCount(count - 1 )}>Kurang</button>
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+// state simpan array dan object
+import { useState } from "react";
 
 function App(){
+  const [todos,setTodos] = useState(["Belajar React","Belajar JSX"])
+
+  const addTodo = () => {
+    setTodos([...todos, "Belajar State"])
+  }
+
   return(
     <div>
-      {/* destructring props */}
-      <UserCard name="Guntur" age={23}/>
-      <UserCard name="Gilang" age={20}/>
+      <h1>Daftar Todo:</h1>
+      <ul>
+        {todos.map((todo,index) => (
+          <li key={index}>{todo}</li>
+        ))}
+      </ul>
+      <button onClick={addTodo}>Tambah todo</button>
     </div>
   )
 }
