@@ -1,39 +1,38 @@
-// functional component
-
-// function Welcome(){
-//   return <h1>Halo, ini adalah component Welcome!</h1>
+// menggunakan props di komponen
+// function Welcome(props){
+//   return <h1>Halo, {props.name}</h1>
 // }
 
 // function App(){
-//   return (
+//   return(
 //     <div>
-//       <Welcome/>
-//       {/* reusable component */}
-//       <Welcome/>
-//       <Welcome/>
+//       <Welcome name="Guntur"/>
+//       <Welcome name="Lailam"/>
+//       <Welcome name="Yuro"/>
 //     </div>
 //   )
 // }
 
-// export default App;
+// export default App
 
 
 
-// harus diawali huruf besar
-// function Welcome(){
-//   return <h1>Hello</h1>
-// } 
-
-
-
-// moduldarisasi komponent
-import Header from "./components/Header";
+// menggunakan beberapa props
+function UserCard(props){
+  return(
+    <div>
+      <h2>{name}</h2>
+      <p>Umur: {page}</p>
+    </div>
+  )
+}
 
 function App(){
   return(
     <div>
-      <Header/>
-      <p>Halo,ini halaman utama React</p>
+      {/* destructring props */}
+      <UserCard name="Guntur" age={23}/>
+      <UserCard name="Gilang" age={20}/>
     </div>
   )
 }
