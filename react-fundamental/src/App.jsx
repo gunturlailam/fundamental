@@ -1,15 +1,12 @@
-// state dasar
-// import {useState} from "react"
-
+// event onClick
 // function App(){
-//   const [message, setMessage]  = useState("Halo, React!")
+//   const handleClick = () => {
+//     alert("Tombol diklik!");
+//   }
 
-//   return(
+//   return (
 //     <div>
-//       <h1>{message}</h1>
-//       <button onClick={() => setMessage("State telah berubah!")}>
-//         Ubah Pesan
-//       </button>
+//       <button onClick={handleClick}>Klik saya</button>
 //     </div>
 //   )
 // }
@@ -17,17 +14,21 @@
 // export default App
 
 
-// state dengan angka (counter)
+
+// event onChange
 // import { useState } from "react";
 
 // function App(){
-//   const [count, setCount] = useState(0)
+//   const [name, setName] = useState("")
+
+//   const handleChange = (event) => {
+//     setName(event.target.value)
+//   }
 
 //   return(
 //     <div>
-//       <h1>Count: {count}</h1>
-//       <button onClick={() => setCount(count + 1 )}>Tambah</button>
-//       <button onClick={() => setCount(count - 1 )}>Kurang</button>
+//       <input type="text" placeholder="Ketik nama...." onChange={handleChange} />
+//       <p>Halo, {name}</p>
 //     </div>
 //   )
 // }
@@ -35,25 +36,44 @@
 // export default App
 
 
-// state simpan array dan object
-import { useState } from "react";
 
+// event onSubmit
+// import { useState } from "react";
+
+// function App(){
+//   const [email, setEmail] = useState("")
+
+//   const handleSubmit = (event) => {
+//     event.preventDefault(); // mencegah reload halaman
+//     alert(`Email dikirim: ${email}`);
+//   }
+
+//   return(
+//     <form onSubmit={handleSubmit}>
+//       <input 
+//       type="email" 
+//       placeholder="Masukkan Email"
+//       value={email}
+//       onChange={(e) => setEmail(e.target.value)}
+//       />
+//         <button type="submit">Kirim</button>
+//     </form>
+//   )
+// }
+
+// export default App
+
+
+// event dengan Paramaeter
 function App(){
-  const [todos,setTodos] = useState(["Belajar React","Belajar JSX"])
-
-  const addTodo = () => {
-    setTodos([...todos, "Belajar State"])
+  const sayHello = (name) => {
+    alert(`Halo, ${name}!`)
   }
 
   return(
     <div>
-      <h1>Daftar Todo:</h1>
-      <ul>
-        {todos.map((todo,index) => (
-          <li key={index}>{todo}</li>
-        ))}
-      </ul>
-      <button onClick={addTodo}>Tambah todo</button>
+      <button onClick={() => sayHello("Budi")}>Sapa Budi</button>
+      <button onClick={() => sayHello("Siti")}>Sapa Siti</button>
     </div>
   )
 }
