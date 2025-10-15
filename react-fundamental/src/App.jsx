@@ -1,43 +1,17 @@
-// meggunakan if/else
+// list menggunakan map()
 // function App(){
-//   const isLoggedIn = true;
-
-//   if(isLoggedIn){
-//     return <h1>Selamat datang kembali!</h1>
-//   }else{
-//     return <h1>Silahkan login terlebih dahulu</h1>
-//   }
-// }
-
-// export default App
-
-
-// menggunakan operator ternary
-// function App(){
-//   const isLoggedIn = false
+//   const names = ["Budi","Siti","Andi","Dewi"]
 
 //   return(
 //     <div>
-//       {
-//         isLoggedIn ? <h1>Dashboard</h1> : <h1>Login Page</h1>
-//       }
-//     </div>
-//   )
-// } 
-
-// export default App
-
-
-// menggunakan operator &&
-// function App(){
-//   const showMessage = true
-
-//   return(
-//     <div>
-//       <h1>Halo,React!</h1>
-//       {
-//         showMessage && <p>Pesan ini hanya muncul jika showMessage = true</p>
-//       }
+//       <h1>Daftar Nama:</h1>
+//       <ul>
+//         {
+//           names.map((name) => (
+//             <li>{name}</li>
+//           ))
+//         }
+//       </ul>
 //     </div>
 //   )
 // }
@@ -45,27 +19,82 @@
 // export default App
 
 
-// mwnggunakan state
-import { useState } from "react";
+// key pada list
+// function App(){
+//   const names = ["Budi","Siti","Andi","Dewi "]
+
+//   return(
+//     <div>
+//       <h1>Daftar Nama:</h1>
+//       <ul>
+//         {
+//           names.map((name,index) => (
+//             <li key={index}>{name}</li>
+//           ))
+//         }
+//       </ul>
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+// list dengan object
+// function App(){
+//   const users = [
+//     {id:1,name:"Budi",age:20},
+//     {id:2,name:"Siti",age:22},
+//     {id:3,name:"Andi",age:19},
+//   ]
+
+//   return(
+//     <div>
+//       <h1>Daftar User:</h1>
+//       <ul>
+//         {
+//           users.map((user) => (
+//             <li key={user.id}>
+//               {user.name} - {user.age} tahun
+//             </li>
+//           ))
+//         }
+//       </ul>
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+// list dengan komponent terpisah
+function UserItem({name,age}){
+  return(
+    <li>
+      {name} - {age} tahun
+    </li>
+  )
+}
 
 function App(){
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const users = [
+    {id:1,name:"Budi",age:20},
+    {id:2,name:"Siti",age:22},
+    {id:3,name:"Andi",age:19}
+  ]
 
-    return (
-      <div>
+  return(
+    <div>
+      <h1>Daftar User:</h1>
+      <ul>
         {
-          isLoggedIn ? (
-            <h2>Selamat datang kembali!</h2>
-          ) : (
-            <h1>Silahkan login terlebih dahulu.</h1>
-          )
+          users.map((user) => (
+            <UserItem key={user.id} name={user.name} age={user.age}/>
+          ))
         }
-        
-        <button onClick={() => setIsLoggedIn(!isLoggedIn)}>
-          {isLoggedIn ? "Logout" : "Login"}
-        </button>
-      </div>
-    )
+      </ul>
+    </div>
+  )
 }
 
 export default App
