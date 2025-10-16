@@ -1,52 +1,38 @@
-// useEffect tanpa dependencies
-// import { useState, useEffect } from "react";
+// useRef mengakses DOM
+// import { useRef } from "react";
 
 // function App(){
-//     const [count, setCount] = useState(0);
+//     const inputRef = useRef()
 
-//     useEffect(() => {
-//         console.log("Component dirender ulang")
-//     })
+//     const focusInput = () => {
+//         inputRef.current.focus()
+//     }
 
 //     return(
 //         <div>
-//             <h1>Count: {count}</h1>
-//             <button onClick={() => setCount(count+1)}>Tambah</button>
+//             <input type="text" ref={inputRef} placeholder="Ketik sesuatu..."/>
+//             <button onClick={focusInput}>Fokus ke input</button>
 //         </div>
 //     )
-// }
-
-// export default App;
-
-
-// useEffect dengan Array Kosong []
-// import { useEffect } from "react";
-
-// function App(){
-//     useEffect(() => {
-//         console.log("Component pertama kali dimuat")
-//     }, [])
-
-//     return <h1>Hello React</h1>
 // }
 
 // export default App
 
 
-// useEffect dengan Dependencies
-// import { useState, useEffect} from "react";
+// useRef menyimpan nilai tanpa re-render
+// import {useRef, useState} from "react"
 
 // function App(){
 //     const [count, setCount] = useState(0)
+//     const renderCount = useRef(0)
 
-//     useEffect(() => {
-//         console.log(`Count berubah menjadi: ${count}`)
-//     }, [count])
+//     renderCount.current += 1
 
 //     return(
 //         <div>
 //             <h1>Count: {count}</h1>
 //             <button onClick={() => setCount(count+1)}>Tambah</button>
+//             <p>Component dirender sebanyak: {renderCount.current} kali</p>
 //         </div>
 //     )
 // }
@@ -54,23 +40,24 @@
 // export default App
 
 
-// membersihkan efek(cleanup)
-import { useEffect } from "react";
+// useRef menyimpan data sebelumnya
+import { useState, useEffect, useRef } from "react";
 
 function App(){
+    const [count, setCount] = useState(0)
+    const prevCount = useRef()
+
     useEffect(() => {
-        const interval = setInterval(() => {
-            console.log("Interval berjalan...")
-        },1000)
+        prevCount.current = count
+    }, [count])
 
-        // return dijalankan ketika component di-unmount
-        return ()=> {
-            clearInterval(interval)
-            console.log("Interval dihentikan")
-        }
-    }, [])
-
-    return <h1>Lihat console untuk interval.</h1>
+    return(
+        <div>
+            <h1>Count sekarang: {count}</h1>
+            <h2>Count sebelumnya: {prevCount.current}</h2>
+            <button onClick={() => setCount(count+1)}>Tambah</button>
+        </div>
+    )
 }
 
 export default App
