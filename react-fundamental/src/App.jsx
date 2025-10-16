@@ -1,17 +1,19 @@
-// useRef mengakses DOM
-// import { useRef } from "react";
+// React.Memo
+// import React, {useState} from "react";
+
+// const Child = React.memo(({name}) => {
+//     console.log("Render Child")
+//     return <h2>Halo, {name}</h2>
+// })
 
 // function App(){
-//     const inputRef = useRef()
-
-//     const focusInput = () => {
-//         inputRef.current.focus()
-//     }
+//     const [count,setCount] = useState(0)
 
 //     return(
 //         <div>
-//             <input type="text" ref={inputRef} placeholder="Ketik sesuatu..."/>
-//             <button onClick={focusInput}>Fokus ke input</button>
+//             <Child name="Budi"/>
+//             <p>Count: {count}</p>
+//             <button onClick={() => setCount(count+1)}>Tambah</button>
 //         </div>
 //     )
 // }
@@ -19,20 +21,26 @@
 // export default App
 
 
-// useRef menyimpan nilai tanpa re-render
-// import {useRef, useState} from "react"
+// useMemo
+// import { useState, useMemo } from "react";
 
 // function App(){
 //     const [count, setCount] = useState(0)
-//     const renderCount = useRef(0)
+//     const [other, setOther] = useState(false)
+    
+//     const expensiveCalculation = (num) => {
+//         console.log("Hitung ulang...")
+//         for(let i = 0; i < 1000000000; i++ ){} //simulasi proses berat
+//         return num * 2
+//     }
 
-//     renderCount.current += 1
+//     const result = useMemo(() => expensiveCalculation(count),[count])
 
 //     return(
 //         <div>
-//             <h1>Count: {count}</h1>
-//             <button onClick={() => setCount(count+1)}>Tambah</button>
-//             <p>Component dirender sebanyak: {renderCount.current} kali</p>
+//             <h1>Hasil: {result}</h1>
+//             <button onClick={() => setCount(count+1)}>Tambah Count</button>
+//             <button onClick={() => setOther(!other)}>Toggle Other</button>
 //         </div>
 //     )
 // }
@@ -40,22 +48,26 @@
 // export default App
 
 
-// useRef menyimpan data sebelumnya
-import { useState, useEffect, useRef } from "react";
+// useCallback
+import React ,{ useState, useCallback } from "react";
+
+const Child = React.memo(({ onClick }) => {
+    console.log("Render Child")
+    return <button onClick={onClick}>Klik Anak</button>
+})
 
 function App(){
     const [count, setCount] = useState(0)
-    const prevCount = useRef()
 
-    useEffect(() => {
-        prevCount.current = count
-    }, [count])
+    const handleClick = useCallback(() => {
+        console.log("Button diklik")
+    },[])
 
     return(
         <div>
-            <h1>Count sekarang: {count}</h1>
-            <h2>Count sebelumnya: {prevCount.current}</h2>
-            <button onClick={() => setCount(count+1)}>Tambah</button>
+            <Child onClick={handleClick}/>
+            <p>Count: {count}</p>
+            <button onClick={() => setCount(count + 1)}>Tambah</button>   
         </div>
     )
 }
