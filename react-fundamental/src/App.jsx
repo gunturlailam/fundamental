@@ -1,83 +1,76 @@
-// controlled component
-// import { useState } from "react";
+// useEffect tanpa dependencies
+// import { useState, useEffect } from "react";
 
 // function App(){
-//     const [name, setName] = useState("")
+//     const [count, setCount] = useState(0);
 
-//     const handleSubmit = (event) => {
-//         event.preventDefault();
-//         alert(`Nama:${name}`)
-//     }
+//     useEffect(() => {
+//         console.log("Component dirender ulang")
+//     })
 
 //     return(
-//         <form onSubmit={handleSubmit}>
-//             <input 
-//             type="text"
-//             value={name}
-//             onChange={(e) => setName(e.target.value)}
-//             placeholder="Masukkan Nama" />
-//             <button type="submit">Kirim</button>
-//         </form>
+//         <div>
+//             <h1>Count: {count}</h1>
+//             <button onClick={() => setCount(count+1)}>Tambah</button>
+//         </div>
+//     )
+// }
+
+// export default App;
+
+
+// useEffect dengan Array Kosong []
+// import { useEffect } from "react";
+
+// function App(){
+//     useEffect(() => {
+//         console.log("Component pertama kali dimuat")
+//     }, [])
+
+//     return <h1>Hello React</h1>
+// }
+
+// export default App
+
+
+// useEffect dengan Dependencies
+// import { useState, useEffect} from "react";
+
+// function App(){
+//     const [count, setCount] = useState(0)
+
+//     useEffect(() => {
+//         console.log(`Count berubah menjadi: ${count}`)
+//     }, [count])
+
+//     return(
+//         <div>
+//             <h1>Count: {count}</h1>
+//             <button onClick={() => setCount(count+1)}>Tambah</button>
+//         </div>
 //     )
 // }
 
 // export default App
 
 
-// uncontrolled component
-// import { useRef } from "react";
-
-// function App(){
-//     const nameRef = useRef()
-
-//     const handleSubmit = (event) => {
-//         event.preventDefault()
-//         alert(`Nama: ${nameRef.current.value}`)
-//     }
-
-//     return(
-//         <form onSubmit={handleSubmit}>
-//             <input type="text" ref={nameRef} placeholder="Masukkan Nama" />
-//             <button type="submit">Kirim</button>
-//         </form>
-//     )
-// }
-
-// export default App
-
-
-// form dengan beberapa input
-import { useState } from "react";
+// membersihkan efek(cleanup)
+import { useEffect } from "react";
 
 function App(){
-    const [form, setForm] = useState({email:"",password: ""});
+    useEffect(() => {
+        const interval = setInterval(() => {
+            console.log("Interval berjalan...")
+        },1000)
 
-    const handleChange = (e) => {
-        setForm({...form, [e.target.name]: e.target.value})
-    }
+        // return dijalankan ketika component di-unmount
+        return ()=> {
+            clearInterval(interval)
+            console.log("Interval dihentikan")
+        }
+    }, [])
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        alert( `Email:  ${form.email}, Password: ${form.password}`)
-    }
-
-    return(
-        <form onSubmit={handleSubmit}>
-            <input 
-            type="email"
-            name="email"
-            placeholder="Masukkan Email"
-            value={form.email}
-            onChange={handleChange} />
-            <input 
-            type="password"
-            name="password"
-            placeholder="Masukkan Password" 
-            value={form.password}
-            onChange={handleChange}/>
-            <button type="submit">Login</button>
-        </form>
-    )
+    return <h1>Lihat console untuk interval.</h1>
 }
 
 export default App
