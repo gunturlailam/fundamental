@@ -1,5 +1,22 @@
-.title{
+.active {
+  color: green;
+}
+
+.inactive {
   color: red;
-  font-size: 28px;
-  text-align: center;
+}
+
+.box{
+  padding: 10px;
+  font-weight: bold;
+}
+
+.dark{
+  background: black;
+  color: white;
+}
+
+.light{
+  background: white;
+  color: black;
 }

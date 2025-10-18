@@ -1,45 +1,65 @@
-// CSS Modules
-import styles from "./App.module.css";
+// // class biasa
+// import "./App.css"
 
-function App() {
-  return (
-    <div>
-      <h1 className={styles.title}>
-        Halo, ini menggunakan CSS Modules (hijau)
-      </h1>
-    </div>
-  );
-}
-
-export default App;
-
-// Contoh lainnya (uncomment untuk mencoba):
-
-// Inline style:
 // function App(){
-//   return (
+//   return <h1 className="title">Halo, React!</h1>
+// }
+
+// export default App
+
+
+// class dinamis
+// import { useState } from "react";
+// import "./App.css"
+
+// function App(){
+//   const [isActive, setIsActive] = useState(false)
+
+//   return(
 //     <div>
-//       <h1 style={{ color:"blue", fontSize: "24px"}}>
-//         Halo, ini teks berwarna biru
-//       </h1>
+//       <h1 className={isActive ? "active" : "inactive"}>Halo, React!</h1>
+//       <button onClick={() => setIsActive(!isActive)}>
+//         Toggle Class
+//       </button>
 //     </div>
 //   )
 // }
 
-// CSS eksternal:
+// export default App
+
+
+// template literal
 // import "./App.css"
-// function App(){
-//   return <h1 className="title">
-//     Halo, ini teks berwarna merah
-//   </h1>
+
+// function App () {
+//   const isDark = true
+
+//   return(
+//     <div className={`box ${isDark ? "dark" : "light"}`}>
+//       Mode Tampilan
+//     </div>
+//   )
 // }
 
-// Styled Components (perlu install dulu: npm install styled-components):
-// import styled from "styled-components";
-// const Title = styled.h1`
-//   color: purple;
-//   text-decoration: underline;
-// `;
-// function App() {
-//   return <Title>Halo, ini teks berwarna ungu</Title>;
-// }
+// export default App
+
+
+// library clsx
+import clsx from "clsx";
+import { useState } from "react";
+import "./App.css"
+
+function App(){
+  const [active, setActive] = useState(false)
+
+  return (
+    <div>
+      <h1 className={clsx("title", {active:active, inactive: !active})}>
+        Halo, React!
+      </h1>
+      <button onClick={() => setActive(!active)}>Toggle Class</button>
+    </div>
+  )
+}
+
+export default App
