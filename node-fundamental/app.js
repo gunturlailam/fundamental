@@ -1,19 +1,10 @@
-// 1. Global 
-// global.nama = "NodeJS";
+// require function dari halo.js
+const sapa = require('./halo');
 
-// console.log("Halo " + global.nama); // Halo NodeJS
+sapa('Guntur'); 
 
-// 2. Console
-// console.log("Halo dari nodejs"); // Halo dari nodejs
+// require object dari user.js
+const user = require('./user');
 
-// 3. Process
-// console.log(process.platform); 
-
-// 4 setTimeout
-// setTimeout(() => {
-//     console.log("Hello after 2 seconds");
-// },2000);
-
-// 5.Buffer
-const buf = Buffer.from("Hello NodeJS");
-console.log(buf);
+console.log(user.nama);
+console.log(user.umur);
