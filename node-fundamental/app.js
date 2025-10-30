@@ -1,0 +1,1 @@
+console.log("Halo, ini adalah file Javascipt pertama kita di node.js!")
