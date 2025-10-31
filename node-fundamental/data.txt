@@ -1,0 +1,3 @@
+Hello World!
+Ini adalah contoh file teks untuk dibaca oleh Node.js
+Baris ketiga dari file data.txt
